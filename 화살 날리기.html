@@ -11,13 +11,17 @@
 <script src="./Arrow.js"></script>
 <script>
 var data=new Array();
+var colorArray=["red","orange","yellow","green","blue","navy","purple"];
 
 addEventListener("load", function(){
 	//화살을 원하는 갯수만큼 거푸집으로부터 생성해보자!!
 	for(var i=0;i<50;i++){
 		var r=parseInt(Math.random()*9);//0.0~0.9 난수
+		
+		//색상용 랜덤 
+		var c=parseInt(Math.random()*colorArray.length);
 
-		var arr=new Arrow(0, i*30, (r+1)*8); //화살 생성해!! (거푸집으로부터 메모리에 올려진
+		var arr=new Arrow(0, i*30, (r+1)*8, colorArray[c]); //화살 생성해!! (거푸집으로부터 메모리에 올려진
 										//객체 단위 하나를 인스턴스라 한다..)
 		arr.init();// 화살이 보유한 함수(=메서드) 호출!!
 
