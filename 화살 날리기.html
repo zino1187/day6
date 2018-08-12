@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>화살 날리기</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+</style>
+<script src="./Arrow.js"></script>
+<script>
+var data=new Array();
+
+addEventListener("load", function(){
+	//화살을 원하는 갯수만큼 거푸집으로부터 생성해보자!!
+	for(var i=0;i<50;i++){
+		var r=parseInt(Math.random()*9);//0.0~0.9 난수
+
+		var arr=new Arrow(0, i*30, (r+1)*8); //화살 생성해!! (거푸집으로부터 메모리에 올려진
+										//객체 단위 하나를 인스턴스라 한다..)
+		arr.init();// 화살이 보유한 함수(=메서드) 호출!!
+
+		data.push(arr); //차곡 차곡 배열에 넣기!!
+	}
+	gameLoop();
+});
+
+function gameLoop(){
+	//메모리에 생성된 50개의 화살이 각자 보유한 move() 함수를 호출해주자!
+	for(var i=0;i<data.length;i++){
+		data[i].move();
+	}
+	setTimeout("gameLoop()",10);
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>
