@@ -84,6 +84,15 @@ function gameLoop(){
 	for(var i=0;i<bulletArray.length;i++){
 		bulletArray[i].tick();
 		bulletArray[i].render();
+		//현재 실행중인 총알이 스크린을 넘어섰는지 판단해보자1!
+		if(bulletArray[i].x >screen.width-200){
+			console.log("저 죽어마땅합니다.");
+			//화면에서 제거....removeChild()
+			stage.removeChild(bulletArray[i].img);
+			//배열명단에서도 제거...
+			var index=bulletArray.indexOf(bulletArray[i]);
+			bulletArray.splice(index,1);
+		}
 	}
 
 	setTimeout("gameLoop()",10);
